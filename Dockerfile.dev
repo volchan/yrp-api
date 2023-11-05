@@ -1,0 +1,11 @@
+FROM node:21-alpine AS builder
+
+WORKDIR /app
+
+COPY package.json yarn.lock ./
+COPY .yarn/releases ./.yarn/releases
+COPY .yarnrc.yml ./.yarnrc.yml
+
+RUN yarn install
+
+COPY . .
