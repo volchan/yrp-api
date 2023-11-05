@@ -1,4 +1,4 @@
-const { env } = process;
+const { env } = process
 
 export default {
   env: env.NODE_ENV,
@@ -8,4 +8,4 @@ export default {
 
   flareSolverBaseUrl: env.FLARE_SOLVER_BASE_URL,
   yggBasePasskey: env.YGG_BASE_PASSKEY,
-};
+}

@@ -1,25 +1,24 @@
-import bodyParser from 'body-parser';
-import config from 'config';
-import cors from 'cors';
-import dotenv from 'dotenv';
-import express from 'express';
-import helmet from 'helmet';
+import config from 'config'
+import cors from 'cors'
+import dotenv from 'dotenv'
+import express from 'express'
+import helmet from 'helmet'
 
-dotenv.config();
+dotenv.config()
 
-const app = express();
+const app = express()
 
 app.use(cors())
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(helmet());
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+app.use(helmet())
 
 app.get('/', (req, res) => {
-  res.json({ status: 'ok', code: 200, data: { message: 'Hello from express!' } });
-});
+  res.json({ status: 'ok', code: 200, data: { message: 'Hello from express!' } })
+})
 
-const port = config.get<number>('port');
+const port = config.get<number>('port')
 
-app.listen(port, () => {  
-  console.log(`Listening at http://localhost:${port}`);
-});
+app.listen(port, () => {
+  console.log(`Listening at http://localhost:${port}`) // eslint-disable-line no-console
+})
