@@ -8,7 +8,7 @@ import errorHandlerMiddleware from '@middlewares/error-handler.middleware'
 
 const app = express()
 
-app.use(cors())
+app.use(cors({ origin: config.get<Array<string>>('allowedOrigins') }))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(helmet())

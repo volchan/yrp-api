@@ -1,4 +1,6 @@
+import send from '@middlewares/response-handler.middleware'
 import express, { Request, Response } from 'express'
+import { StatusCodes } from 'http-status-codes'
 
 const AppRouter = express.Router()
 
@@ -7,17 +9,12 @@ AppRouter.get('/', (req: Request, res: Response) => {
 })
 
 AppRouter.get('/health', (req: Request, res: Response) => {
-  return res.status(200).json({
-    status: 'OK',
-    message: 'Server is healthy',
-  })
+  return send(req, res, StatusCodes.OK, { message: 'Server is healthy' })
 })
 
+AppRouter.options('*')
 AppRouter.use('*', (req: Request, res: Response) => {
-  return res.status(404).json({
-    status: 'Not Found',
-    message: 'The route you are trying to access does not exist',
-  })
+  return send(req, res, StatusCodes.NOT_FOUND, { message: 'The page you are looking for does not exist' })
 })
 
 export default AppRouter
