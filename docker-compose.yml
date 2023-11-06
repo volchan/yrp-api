@@ -14,5 +14,4 @@ services:
       NODE_ENV: development
       PORT: 3000
     volumes:
-      - '.:/app'
-      - '/app/node_modules'
+      - .:/app

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "baseUrl": "./src",
+    "baseUrl": "./",
     "composite": false,
     "declaration": true,
     "declarationMap": true,
@@ -13,16 +13,23 @@
     "isolatedModules": true,
     "module": "commonjs",
     "moduleResolution": "node",
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "outDir": "./dist",
-    "paths": {},
+    "paths": {
+      "@middlewares/*": [
+        "./src/middlewares/*"
+      ],
+      "@routes/*": [
+        "./src/routes/*"
+      ]
+    },
     "preserveWatchOutput": true,
     "skipLibCheck": true,
     "strict": true,
     "strictNullChecks": true,
-    "strictPropertyInitialization": false //set it to false
+    "strictPropertyInitialization": false
   },
   "display": "Default",
   "exclude": [
@@ -31,7 +38,7 @@
   ],
   "include": [
     "./**/*",
-    ".eslintrc.js"
+    ".eslintrc.json"
   ],
   "rootDir": "."
 }
