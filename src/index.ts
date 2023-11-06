@@ -37,11 +37,6 @@ AppDataSource.initialize()
   .catch(err => {
     logger.error("Couldn't connect to the database")
     logger.error(err)
-    logger.error(`DB_HOST: ${config.get<string>('db.host')}`)
-    logger.error(`DB_PORT: ${config.get<number>('db.port')}`)
-    logger.error(`DB_USERNAME: ${config.get<string>('db.username')}`)
-    logger.error(`DB_PASSWORD: ${config.get<string>('db.password')}`)
-    logger.error(`DB_DATABASE: ${config.get<string>('db.database')}`)
 
     process.exit(1)
   })
