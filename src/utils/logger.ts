@@ -19,7 +19,7 @@ const colors = {
   debug: 'blue',
 }
 
-const timeFormat = 'YYYY-MM-DD HH:mm:ss'
+const timeFormat = 'YYYY-MM-DD HH:mm:ss Z'
 
 winston.addColors(colors)
 

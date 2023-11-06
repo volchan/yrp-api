@@ -27,4 +27,9 @@ const devConfig = morgan('dev', { stream: { write: message => logger.http(messag
 
 const morganMiddleware = process.env.NODE_ENV === 'production' ? prodConfig : devConfig
 
-export default morganMiddleware
+const startingRequestMiddleware = (req, res, next) => {
+  logger.http(`Started ${req.method} ${req.url} ${req.ip}`)
+  next()
+}
+
+export { morganMiddleware, startingRequestMiddleware }
