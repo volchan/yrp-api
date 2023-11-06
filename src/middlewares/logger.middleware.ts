@@ -1,6 +1,6 @@
 import morgan from 'morgan'
 
-import { logger } from '@utils/logger'
+import logger from '@utils/logger'
 
 const prodConfig = morgan(
   function (tokens, req, res) {

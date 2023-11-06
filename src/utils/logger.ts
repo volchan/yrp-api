@@ -1,5 +1,4 @@
 import winston from 'winston'
-import DailyRotateFile from 'winston-daily-rotate-file'
 
 const levels = {
   error: 0,
@@ -48,4 +47,4 @@ const logger = winston.createLogger({
   rejectionHandlers: [new winston.transports.File({ filename: 'logs/rejections.log' })],
 })
 
-export { logger }
+export default logger
