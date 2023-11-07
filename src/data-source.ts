@@ -1,10 +1,11 @@
 import config from 'config'
-import { DataSource } from 'typeorm'
+import { DataSource, DataSourceOptions } from 'typeorm'
+import { SeederOptions } from 'typeorm-extension'
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies'
 
 import DataSourceLogger from '@utils/datasource-logger'
 
-export const AppDataSource = new DataSource({
+const options: DataSourceOptions & SeederOptions = {
   type: 'postgres',
   host: config.get<string>('db.host'),
   port: config.get<number>('db.port'),
@@ -22,4 +23,8 @@ export const AppDataSource = new DataSource({
 
   entities: [`${__dirname}/entities/*.ts`],
   migrations: [`${__dirname}/migrations/*.ts`],
-})
+  seeds: [`${__dirname}/seeds/**/*.ts`],
+  factories: [`${__dirname}/factories/**/*.ts`],
+}
+
+export const AppDataSource = new DataSource(options)

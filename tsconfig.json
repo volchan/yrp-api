@@ -18,6 +18,9 @@
     "noUnusedParameters": false,
     "outDir": "./dist",
     "paths": {
+      "@entities/*": [
+        "./src/entities/*"
+      ],
       "@middlewares/*": [
         "./src/middlewares/*"
       ],

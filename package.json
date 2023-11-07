@@ -2,14 +2,20 @@
   "name": "yrp-api",
   "packageManager": "yarn@4.0.1",
   "scripts": {
+    "postinstall": "husky install",
     "dev": "ts-node-dev -r tsconfig-paths/register --respawn --deps --transpile-only src/index.ts",
-    "lint": "npx eslint --fix --ext .ts src",
-    "format": "npx prettier --write \"./**/*.ts\"",
-    "migration:generate": "typeorm-ts-node-commonjs -d ./src/data-source.ts migration:generate ./src/migrations/${0}",
-    "migration:create": "typeorm-ts-node-commonjs migration:create ./src/migrations/${0}",
-    "migration:run": "typeorm-ts-node-commonjs -d ./src/data-source.ts migration:run"
+    "lint": "eslint --fix --ext .ts src",
+    "format": "prettier --write \"./**/*.ts\"",
+    "db:create": "ts-node -r tsconfig-paths/register ./node_modules/typeorm-extension/bin/cli.cjs db:create",
+    "db:drop": "ts-node -r tsconfig-paths/register ./node_modules/typeorm-extension/bin/cli.cjs db:drop",
+    "db:seed": "ts-node -r tsconfig-paths/register ./node_modules/typeorm-extension/bin/cli.cjs seed:run",
+    "seed:create": "ts-node -r tsconfig-paths/register ./node_modules/typeorm-extension/bin/cli.cjs seed:create",
+    "migration:generate": "NODE_OPTIONS='-r tsconfig-paths/register' typeorm-ts-node-commonjs -d ./src/data-source.ts migration:generate ./src/migrations/${0}",
+    "migration:create": "NODE_OPTIONS='-r tsconfig-paths/register' typeorm-ts-node-commonjs migration:create ./src/migrations/${0}",
+    "migration:run": "NODE_OPTIONS='-r tsconfig-paths/register' typeorm-ts-node-commonjs -d ./src/data-source.ts migration:run"
   },
   "dependencies": {
+    "@faker-js/faker": "^8.2.0",
     "class-validator": "^0.14.0",
     "config": "^3.3.9",
     "cookie-parser": "^1.4.6",
@@ -20,9 +26,11 @@
     "helmet": "^7.0.0",
     "http-status-codes": "^2.3.0",
     "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
     "pg": "^8.11.3",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.3.17",
+    "typeorm-extension": "^3.1.1",
     "typeorm-naming-strategies": "^4.1.0",
     "typescript": "^5.2.2",
     "winston": "^3.11.0",
@@ -37,6 +45,7 @@
     "@types/eslint": "^8.44.6",
     "@types/express": "^4.17.20",
     "@types/morgan": "^1.9.7",
+    "@types/mysql": "^2",
     "@types/node": "^20.8.10",
     "@types/pg": "^8",
     "@types/winston": "^2.4.4",
@@ -51,6 +60,7 @@
     "husky": "^8.0.3",
     "lint-staged": "^15.0.2",
     "prettier": "^3.0.3",
+    "ts-node": "^10.9.1",
     "ts-node-dev": "^2.0.0",
     "tsconfig-paths": "^4.2.0"
   }

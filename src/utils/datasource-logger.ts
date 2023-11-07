@@ -2,18 +2,18 @@ import { Logger } from 'typeorm'
 import logger from './logger'
 
 export default class DataSourceLogger implements Logger {
-  logQuery(query: string, parameters?: any[]) {
+  logQuery(query: string, parameters?: unknown[]) {
     logger.log('psql', `Query: ${query}`)
     if (parameters && parameters.length > 0) logger.log('psql', `Parameters: ${parameters}`)
   }
 
-  logQueryError(error: string, query: string, parameters?: any[]) {
+  logQueryError(error: string, query: string, parameters?: unknown[]) {
     logger.log('psql', `Error: ${error}`)
     logger.log('psql', `Query: ${query}`)
     if (parameters && parameters.length > 0) logger.log('psql', `Parameters: ${parameters}`)
   }
 
-  logQuerySlow(time: number, query: string, parameters?: any[]) {
+  logQuerySlow(time: number, query: string, parameters?: unknown[]) {
     logger.log('psql', `Time: ${time}`)
     logger.log('psql', `Query: ${query}`)
     if (parameters && parameters.length > 0) logger.log('psql', `Parameters: ${parameters}`)
@@ -27,7 +27,7 @@ export default class DataSourceLogger implements Logger {
     logger.log('psql', `Message: ${message}`)
   }
 
-  log(level: 'log' | 'info' | 'warn', message: any) {
+  log(level: 'log' | 'info' | 'warn', message: unknown) {
     logger.log('psql', `Level: ${level}`)
     logger.log('psql', `Message: ${message}`)
   }
