@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import { StatusCodes, getReasonPhrase } from 'http-status-codes'
 
 type ResponseData = {
-  [key: string]: unknown
+  [key: string]: any
 }
 
 export default function send(req: Request, res: Response, statusCode: StatusCodes, data: ResponseData) {

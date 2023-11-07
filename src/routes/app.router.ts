@@ -1,6 +1,7 @@
-import send from '@middlewares/response-handler.middleware'
 import express, { Request, Response } from 'express'
 import { StatusCodes } from 'http-status-codes'
+
+import send from '@middlewares/response-handler.middleware'
 
 const AppRouter = express.Router()
 
