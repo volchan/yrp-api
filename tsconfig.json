@@ -18,6 +18,12 @@
     "noUnusedParameters": false,
     "outDir": "./dist",
     "paths": {
+      "@controllers/*": [
+        "./src/controllers/*"
+      ],
+      "@dtos/*": [
+        "./src/dtos/*"
+      ],
       "@entities/*": [
         "./src/entities/*"
       ],

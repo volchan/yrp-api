@@ -7,5 +7,6 @@ export default class UserSeeder implements Seeder {
   public async run(_dataSource: DataSource, factoryManager: SeederFactoryManager): Promise<any> {
     const userFactory = await factoryManager.get(User)
     await userFactory.saveMany(5)
+    await userFactory.save({ password: 'YrpAdmin123!', role: 'Admin' })
   }
 }

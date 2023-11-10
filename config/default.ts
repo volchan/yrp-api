@@ -13,6 +13,8 @@ export default {
   flareSolverBaseUrl: env.FLARE_SOLVER_BASE_URL,
   yggBasePasskey: env.YGG_BASE_PASSKEY,
 
+  jwtSecret: env.JWT_SECRET,
+
   db: {
     host: env.DB_HOST,
     port: env.DB_PORT,
