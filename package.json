@@ -4,8 +4,8 @@
   "scripts": {
     "postinstall": "husky install",
     "dev": "yarn dev:db:start && ts-node-dev -r tsconfig-paths/register --respawn --deps --transpile-only src/index.ts",
-    "dev:db:start": "docker compose -f ./docker-compose.dev.yml up -d",
-    "dev:db:stop": "docker compose -f ./docker-compose.dev.yml down",
+    "dev:db:start": "docker compose up -d",
+    "dev:db:stop": "docker compose down",
     "lint": "eslint --fix --ext .ts src",
     "format": "prettier --write \"./**/*.ts\"",
     "db:create": "ts-node -r tsconfig-paths/register ./node_modules/typeorm-extension/bin/cli.cjs db:create",
