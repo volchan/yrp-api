@@ -28,14 +28,14 @@ export class CreateUserDTO {
 export class LoginUserDTO extends CreateUserDTO {}
 
 export class UpdateUserDTO extends UserDTO {
-  @Exclude()
-  id!: string
+  @Expose()
+  email!: string
 
   @Expose()
   password!: string
 
-  @Exclude()
-  role!: string
+  @Expose()
+  yggPasskey!: string
 }
 
 export class AdminUpdateUserDTO extends UpdateUserDTO {

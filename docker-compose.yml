@@ -17,3 +17,10 @@ services:
       POSTGRES_DB: yrp-api_development
     volumes:
       - yrp-pg-data:/var/lib/postgresql/data
+  redis:
+    container_name: yrp-redis
+    image: redis:alpine
+    environment:
+      REDIS_PASSWORD: redis
+    ports:
+      - 6379:6379

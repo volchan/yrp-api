@@ -2,6 +2,7 @@ import config from 'config'
 import cors from 'cors'
 import express from 'express'
 import helmet from 'helmet'
+import cookieParser from 'cookie-parser'
 
 import AppRouter from '@routes/app.router'
 import errorHandlerMiddleware from '@middlewares/error-handler.middleware'
@@ -14,9 +15,10 @@ AppDataSource.initialize()
   .then(() => {
     const app = express()
 
-    app.use(cors({ origin: config.get<Array<string>>('allowedOrigins') }))
-    app.use(express.json())
+    app.use(express.json({ limit: '10kb' }))
+    app.use(cors({ origin: config.get<Array<string>>('allowedOrigins'), credentials: true }))
     app.use(express.urlencoded({ extended: true }))
+    app.use(cookieParser())
     app.use(helmet())
 
     app.use(startingRequestMiddleware)
